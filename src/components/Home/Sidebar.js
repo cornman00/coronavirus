@@ -2,44 +2,43 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export class Sidebar extends Component {
-  render() {
-    return (
-      <SidebarWrapper>
-        <div className="sidenav">
-          <Link
-            to="/board"
-            className="links"
-            style={{ textDecoration: "None", color: "black" }}
-          >
-            Board
-          </Link>
-          <Link
-            to="/data"
-            className="links"
-            style={{ textDecoration: "None", color: "black" }}
-          >
-            Data
-          </Link>
-          <Link
-            to="/map"
-            className="links"
-            style={{ textDecoration: "None", color: "black" }}
-          >
-            Map
-          </Link>
-          <Link
-            to="/news"
-            className="links"
-            style={{ textDecoration: "None", color: "black" }}
-          >
-            News
-          </Link>
-        </div>
-      </SidebarWrapper>
-    );
-  }
-}
+const Sidebar = props => {
+  return (
+    <SidebarWrapper {...props}>
+      {console.log(props.sidebarOpen)}
+      <div className="sidenav">
+        <Link
+          to="/board"
+          className="links"
+          style={{ textDecoration: "None", color: "black" }}
+        >
+          Board
+        </Link>
+        <Link
+          to="/data"
+          className="links"
+          style={{ textDecoration: "None", color: "black" }}
+        >
+          Data
+        </Link>
+        <Link
+          to="/map"
+          className="links"
+          style={{ textDecoration: "None", color: "black" }}
+        >
+          Map
+        </Link>
+        <Link
+          to="/news"
+          className="links"
+          style={{ textDecoration: "None", color: "black" }}
+        >
+          News
+        </Link>
+      </div>
+    </SidebarWrapper>
+  );
+};
 
 const SidebarWrapper = styled.nav`
   margin: 0;
@@ -62,5 +61,8 @@ const SidebarWrapper = styled.nav`
   .links {
     padding-bottom: 20px;
   }
+
+  transform: ${props =>
+    props.sidebarOpen ? "None" : "translateX(-1000%)"} !important;
 `;
 export default Sidebar;

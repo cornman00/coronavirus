@@ -9,7 +9,7 @@ export const ButtonContainer = styled.button`
   cursor: pointer;
   padding: 5px;
   margin: 5px;
-  //   transitions: 3s;
+  transitions: 3s;
   &:hover {
     background: lightgrey;
   }

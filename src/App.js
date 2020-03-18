@@ -3,15 +3,16 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Home/Navbar";
 import Sidebar from "./components/Home/Sidebar";
+import Main from "./components/Home/Main";
 
 class App extends React.Component {
   render() {
     return (
       <React.Fragment>
         <Navbar />
-        <Sidebar />
+
         <Switch>
-          <Route exact path="/" />
+          <Route exact path="/" component={Main} />
         </Switch>
       </React.Fragment>
     );

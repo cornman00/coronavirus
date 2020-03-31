@@ -20,7 +20,11 @@ class ContextManager extends Component {
   render() {
     return (
       <ProductContext.Provider
-        value={{ ...this.state, openSidebar: this.openSidebar }}
+        value={{
+          ...this.state,
+          openSidebar: this.openSidebar,
+          countTotal: this.countTotal
+        }}
       >
         {this.props.children}
       </ProductContext.Provider>

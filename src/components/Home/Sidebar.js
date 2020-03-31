@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const Sidebar = props => {
   return (
     <SidebarWrapper {...props}>
-      {console.log(props.sidebarOpen)}
       <div className="sidenav">
         <Link
           to="/board"

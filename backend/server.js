@@ -20,8 +20,52 @@ db.connect(err => {
   console.log("database connected");
 });
 
-app.get("/cases", (req, res) => {
-  const query1 = "SELECT * FROM cases1";
+app.get("/cases1", (req, res) => {
+  const query1 = "SELECT * FROM `032820`";
+  db.query(query1, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(results);
+    }
+  });
+});
+
+app.get("/cases2", (req, res) => {
+  const query1 = "SELECT * FROM `032920`";
+  db.query(query1, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(results);
+    }
+  });
+});
+
+app.get("/cases3", (req, res) => {
+  const query1 = "SELECT * FROM `033020`";
+  db.query(query1, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(results);
+    }
+  });
+});
+
+app.get("/cases4", (req, res) => {
+  const query1 = "SELECT * FROM `033120`";
+  db.query(query1, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(results);
+    }
+  });
+});
+
+app.get("/cases5", (req, res) => {
+  const query1 = "SELECT * FROM `040120`";
   db.query(query1, (err, results) => {
     if (err) {
       return res.send(err);

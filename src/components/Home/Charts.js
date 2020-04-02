@@ -11,75 +11,53 @@ import {
   Legend
 } from "recharts";
 
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
-  }
-];
-
 export default class Example extends PureComponent {
   constructor() {
     super();
+    // cases in date order from 1 to 5. Cases5 is the latest.
     this.state = {
-      cases: []
+      cases1: [],
+      cases2: [],
+      cases3: [],
+      cases4: [],
+      cases5: []
     };
   }
 
   componentDidMount() {
-    fetch("http://localhost:5000/cases")
+    fetch("http://localhost:5000/cases1")
       .then(res => res.json())
-      .then(cases => this.setState({ cases }));
+      .then(cases1 => this.setState({ cases1 }));
+
+    fetch("http://localhost:5000/cases2")
+      .then(res => res.json())
+      .then(cases2 => this.setState({ cases2 }));
+
+    fetch("http://localhost:5000/cases3")
+      .then(res => res.json())
+      .then(cases3 => this.setState({ cases3 }));
+
+    fetch("http://localhost:5000/cases4")
+      .then(res => res.json())
+      .then(cases4 => this.setState({ cases4 }));
+
+    fetch("http://localhost:5000/cases5")
+      .then(res => res.json())
+      .then(cases5 => this.setState({ cases5 }));
   }
 
-  getUSTotalCases = () => {
+  // get the total number of confirmed cases in the US
+  getUSTotalCases = cases => {
     function isUS(val) {
       return val.Country_Region === "US";
     }
-    let filtered = this.state.cases.filter(isUS);
+    let filtered = cases.filter(isUS);
     let sum = 0;
     filtered.forEach(elem => (sum = sum + elem.Confirmed));
     return sum;
   };
 
+  // get the total number of cases in the US by state
   casesByState = s => {
     s = s.charAt(0).toUpperCase() + s.slice(1);
     let filtered = this.state.cases.filter(elem => elem.Province_State === s);
@@ -89,13 +67,48 @@ export default class Example extends PureComponent {
   };
 
   render() {
-    const { cases } = this.state;
-    console.log(cases);
-    console.log(cases[1]);
-    console.log(this.casesByState("illinois"));
+    const { cases1, cases2, cases3, cases4, cases5 } = this.state;
 
+    let data = [];
+    if (
+      cases1.length > 0 &&
+      cases2.length > 0 &&
+      cases3.length > 0 &&
+      cases4.length > 0 &&
+      cases5.length > 0
+    ) {
+      data = [
+        {
+          name: cases1[0].Last_Update.substring(0, 11),
+          confirmed: this.getUSTotalCases(cases1)
+        },
+        {
+          name: cases2[0].Last_Update.substring(0, 11),
+          confirmed: this.getUSTotalCases(cases2)
+        },
+        {
+          name: cases3[0].Last_Update.substring(0, 11),
+          confirmed: this.getUSTotalCases(cases3)
+        },
+        {
+          name: cases4[0].Last_Update.substring(0, 11),
+          confirmed: this.getUSTotalCases(cases4)
+        },
+        {
+          name: cases5[0].Last_Update.substring(0, 11),
+          confirmed: this.getUSTotalCases(cases5)
+        }
+      ];
+    }
     return (
-      <div>
+      <div
+        style={{
+          margin: "auto",
+          marginTop: "3.5rem",
+          width: "50%",
+          padding: "10px"
+        }}
+      >
         <LineChart
           width={500}
           height={300}
@@ -114,11 +127,10 @@ export default class Example extends PureComponent {
           <Legend />
           <Line
             type="monotone"
-            dataKey="pv"
+            dataKey="confirmed"
             stroke="#8884d8"
             activeDot={{ r: 8 }}
           />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
         </LineChart>
       </div>
     );

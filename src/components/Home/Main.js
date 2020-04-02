@@ -5,6 +5,7 @@ import Info from "./Info";
 import Map from "./Map";
 import Charts from "./Charts";
 import Table from "./Table";
+
 export class Main extends Component {
   render() {
     return (

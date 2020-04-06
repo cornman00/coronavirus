@@ -129,7 +129,7 @@ export default class Example extends PureComponent {
             type="monotone"
             dataKey="confirmed"
             stroke="#8884d8"
-            activeDot={{ r: 8 }}
+            activeDot={{ r: 5 }}
           />
         </LineChart>
       </div>

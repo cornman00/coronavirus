@@ -2,6 +2,8 @@ body {
   margin: 0;
 }
 
+/* Table style */
+
 .tablecls {
   width: 100%;
   border-collapse: collapse;
@@ -35,4 +37,106 @@ body {
   width: 8rem;
   min-width: 8rem;
   max-width: 8rem;
+}
+
+/* Autentication (Login, Signup) Styles */
+.autn {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 50%;
+  min-height: 480px;
+  margin-top: 7rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.autn h1 {
+  font-weight: bold;
+  margin: 0;
+}
+
+.autn p {
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  margin: 20px 0 30px;
+}
+
+.autn span {
+  font-size: 20px;
+  margin-bottom: 1.5rem;
+}
+
+.autn a {
+  color: #333;
+  font-size: 20px;
+  text-decoration: none;
+  margin: 15px 0;
+}
+
+.autn button {
+  border-radius: 20px;
+  border: 1px solid #ff4b2b;
+  background-color: #ff4b2b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+}
+
+.autn button:active {
+  transform: scale(0.95);
+}
+
+.autn button:focus {
+  outline: none;
+}
+
+.autn button.ghost {
+  background-color: transparent;
+  border-color: #ffffff;
+}
+
+.autn form {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+}
+
+.autn input {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 70%;
+}
+
+.autn .form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+
+.autn .sign-in-container {
+  left: 0;
+  width: 100%;
+}
+
+.autn .sign-up-container {
+  left: 0;
+  width: 100%;
 }

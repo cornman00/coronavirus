@@ -8,6 +8,7 @@ body {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 3rem;
+  margin-top: -7rem;
 }
 
 .tablecls td,
@@ -140,3 +141,10 @@ body {
   left: 0;
   width: 100%;
 }
+
+/* Map style */
+#coronaMap {
+  height: 180px;
+}
+
+/*Board Style*/

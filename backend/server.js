@@ -21,8 +21,8 @@ db.connect(err => {
 });
 
 app.get("/cases1", (req, res) => {
-  const query1 = "SELECT * FROM `032820`";
-  db.query(query1, (err, results) => {
+  const q = "SELECT * FROM `032820`";
+  db.query(q, (err, results) => {
     if (err) {
       return res.send(err);
     } else {
@@ -32,8 +32,8 @@ app.get("/cases1", (req, res) => {
 });
 
 app.get("/cases2", (req, res) => {
-  const query1 = "SELECT * FROM `032920`";
-  db.query(query1, (err, results) => {
+  const q = "SELECT * FROM `032920`";
+  db.query(q, (err, results) => {
     if (err) {
       return res.send(err);
     } else {
@@ -43,8 +43,8 @@ app.get("/cases2", (req, res) => {
 });
 
 app.get("/cases3", (req, res) => {
-  const query1 = "SELECT * FROM `033020`";
-  db.query(query1, (err, results) => {
+  const q = "SELECT * FROM `033020`";
+  db.query(q, (err, results) => {
     if (err) {
       return res.send(err);
     } else {
@@ -54,8 +54,8 @@ app.get("/cases3", (req, res) => {
 });
 
 app.get("/cases4", (req, res) => {
-  const query1 = "SELECT * FROM `033120`";
-  db.query(query1, (err, results) => {
+  const q = "SELECT * FROM `033120`";
+  db.query(q, (err, results) => {
     if (err) {
       return res.send(err);
     } else {
@@ -65,8 +65,8 @@ app.get("/cases4", (req, res) => {
 });
 
 app.get("/cases5", (req, res) => {
-  const query1 = "SELECT * FROM `040120`";
-  db.query(query1, (err, results) => {
+  const q = "SELECT * FROM `040120`";
+  db.query(q, (err, results) => {
     if (err) {
       return res.send(err);
     } else {

@@ -51,7 +51,7 @@ export class Table extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: "3.5rem" }}>
+      <div>
         <table className="tablecls">
           <thead>
             <tr>

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import "../../App.css";
+import L from "leaflet";
 
 export class Map extends Component {
   render() {
-    return <div>map</div>;
+    return <div id="coronaMap"></div>;
   }
 }
 

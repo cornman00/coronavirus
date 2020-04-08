@@ -7,32 +7,18 @@ const Sidebar = props => {
     <SidebarWrapper {...props}>
       <div className="sidenav">
         <Link
+          to="/"
+          className="links"
+          style={{ textDecoration: "None", color: "black" }}
+        >
+          Home
+        </Link>
+        <Link
           to="/board"
           className="links"
           style={{ textDecoration: "None", color: "black" }}
         >
           Board
-        </Link>
-        <Link
-          to="/data"
-          className="links"
-          style={{ textDecoration: "None", color: "black" }}
-        >
-          Data
-        </Link>
-        <Link
-          to="/map"
-          className="links"
-          style={{ textDecoration: "None", color: "black" }}
-        >
-          Map
-        </Link>
-        <Link
-          to="/news"
-          className="links"
-          style={{ textDecoration: "None", color: "black" }}
-        >
-          News
         </Link>
       </div>
     </SidebarWrapper>

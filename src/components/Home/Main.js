@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { ContextConsumer } from "../../context";
 import Info from "./Info";
-import Map from "./Map";
+
 import Charts from "./Charts";
 import Table from "./Table";
 
@@ -12,7 +11,7 @@ export class Main extends Component {
       <MainWrapper>
         <Info />
         <Charts />
-        <Map />
+
         <Table />
       </MainWrapper>
     );

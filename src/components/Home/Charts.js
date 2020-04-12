@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import styled from "styled-components";
 
 import {
   LineChart,
@@ -48,19 +47,16 @@ export default class Example extends PureComponent {
 
   // get the total number of confirmed cases in the US
   getUSTotalCases = cases => {
-    function isUS(val) {
-      return val.Country_Region === "US";
-    }
-    let filtered = cases.filter(isUS);
+    let filtered = cases.filter(elem => elem.Country_Region === "US");
     let sum = 0;
     filtered.forEach(elem => (sum = sum + elem.Confirmed));
     return sum;
   };
 
-  // get the total number of cases in the US by state
-  casesByState = s => {
+  // get the total number of confirmed cases in the US by state
+  casesByState = (caseNum, s) => {
     s = s.charAt(0).toUpperCase() + s.slice(1);
-    let filtered = this.state.cases.filter(elem => elem.Province_State === s);
+    let filtered = caseNum.filter(elem => elem.Province_State === s);
     let sum = 0;
     filtered.forEach(elem => (sum = sum + elem.Confirmed));
     return sum;
@@ -69,7 +65,8 @@ export default class Example extends PureComponent {
   render() {
     const { cases1, cases2, cases3, cases4, cases5 } = this.state;
 
-    let data = [];
+    let us_data = [],
+      il_data = [];
     if (
       cases1.length > 0 &&
       cases2.length > 0 &&
@@ -77,7 +74,7 @@ export default class Example extends PureComponent {
       cases4.length > 0 &&
       cases5.length > 0
     ) {
-      data = [
+      us_data = [
         {
           name: cases1[0].Last_Update.substring(0, 11),
           confirmed: this.getUSTotalCases(cases1)
@@ -99,39 +96,127 @@ export default class Example extends PureComponent {
           confirmed: this.getUSTotalCases(cases5)
         }
       ];
+
+      il_data = [
+        {
+          name: cases1[0].Last_Update.substring(0, 11),
+          confirmed: this.casesByState(cases1, "illinois")
+        },
+        {
+          name: cases2[0].Last_Update.substring(0, 11),
+          confirmed: this.casesByState(cases2, "illinois")
+        },
+        {
+          name: cases3[0].Last_Update.substring(0, 11),
+          confirmed: this.casesByState(cases3, "illinois")
+        },
+        {
+          name: cases4[0].Last_Update.substring(0, 11),
+          confirmed: this.casesByState(cases4, "illinois")
+        },
+        {
+          name: cases5[0].Last_Update.substring(0, 11),
+          confirmed: this.casesByState(cases5, "illinois")
+        }
+      ];
     }
     return (
       <div
-        style={{
-          margin: "auto",
-          marginTop: "3.5rem",
-          width: "50%",
-          padding: "10px"
-        }}
+        className="row"
+        style={{ marginTop: "3.5rem", marginBottom: "12.0rem" }}
       >
-        <LineChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="confirmed"
-            stroke="#8884d8"
-            activeDot={{ r: 5 }}
-          />
-        </LineChart>
+        {/* US cases chart */}
+
+        <div className="col-sm">
+          <h4
+            style={{
+              textAlign: "center",
+              textTransform: "capitalize",
+              marginBottom: "-30px"
+            }}
+          >
+            US total confirmed cases
+          </h4>
+          <div
+            style={{
+              margin: "auto",
+              marginTop: "3.5rem",
+
+              width: "50%",
+              padding: "10px"
+            }}
+          >
+            <LineChart
+              width={500}
+              height={300}
+              data={us_data}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="confirmed"
+                stroke="green"
+                activeDot={{ r: 5 }}
+              />
+            </LineChart>
+          </div>
+        </div>
+
+        {/* Illinois cases chart */}
+
+        <div className="col-sm">
+          <h4
+            style={{
+              textAlign: "center",
+              textTransform: "capitalize",
+              marginBottom: "-30px"
+            }}
+          >
+            illinois total confirmed cases
+          </h4>
+          <div
+            style={{
+              margin: "auto",
+              marginTop: "3.5rem",
+              width: "50%",
+              padding: "10px"
+            }}
+          >
+            <LineChart
+              width={500}
+              height={300}
+              data={il_data}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="confirmed"
+                stroke="blue"
+                activeDot={{ r: 5 }}
+              />
+            </LineChart>
+          </div>
+        </div>
       </div>
     );
   }

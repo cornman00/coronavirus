@@ -58,7 +58,7 @@ body {
 
 .autn h1 {
   font-weight: bold;
-  margin: 0;
+  margin-bottom: 1.5rem;
 }
 
 .autn p {
@@ -67,11 +67,6 @@ body {
   line-height: 20px;
   letter-spacing: 0.5px;
   margin: 20px 0 30px;
-}
-
-.autn span {
-  font-size: 20px;
-  margin-bottom: 1.5rem;
 }
 
 .autn a {
@@ -147,4 +142,35 @@ body {
   height: 180px;
 }
 
-/*Board Style*/
+/* Board Style */
+
+.board-group {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#commentSection {
+  margin: 3rem 10rem 2rem 10rem;
+  padding: 5px;
+  width: 70%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px #999;
+  height: 15vh;
+  font-size: 18px;
+  letter-spacing: 2px;
+  resize: none;
+}
+
+#listComment {
+  margin: 3rem 10rem 2rem 10rem;
+}
+
+.commentBox {
+  font-size: 18px;
+  font-family: New Century Schoolbook, serif;
+  white-space: pre;
+  border-bottom: solid 1px;
+  padding-bottom: 0px;
+  margin-bottom: 2rem;
+}

@@ -8,10 +8,11 @@ export class Login extends Component {
         <div class="form-container sign-in-container">
           <form action="#">
             <h1>Log in</h1>
-            <span>or use your account</span>
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
-            <a href="#">Forgot your password?</a>
+            <u>
+              <a href="#">Forgot your password?</a>
+            </u>
             <button>Log In</button>
           </form>
         </div>

@@ -9,7 +9,7 @@ import { ContextConsumer } from "../../context";
 export class Navbar extends Component {
   render() {
     return (
-      <NavWrapper className="navbar navbar-expand-sm ">
+      <NavWrapper className="navbar navbar-expand-sm">
         <ContextConsumer>
           {value => {
             const { sidebarOpen, openSidebar } = value;
@@ -21,16 +21,15 @@ export class Navbar extends Component {
                 />
                 <Link
                   to="/"
-                  className="navbar-brand"
-                  style={{ color: "black", textDecoration: "None" }}
+                  style={{ color: "#3E3B3B", textDecoration: "None" }}
                 >
-                  <span style={{ paddingTop: "3rem" }}>
-                    <Healthlogo width="40px" height="35px" />
+                  <span>
+                    <Healthlogo width="50px" height="40px" />
                   </span>
                   CoronaTrace
                 </Link>
 
-                <span>
+                <span className="d-none d-sm-block">
                   <Link to="/login">
                     <ButtonContainer>Log In</ButtonContainer>
                   </Link>
@@ -50,6 +49,7 @@ export class Navbar extends Component {
 
 const NavWrapper = styled.nav`
   background: rgb(242, 241, 241);
+  height: 3.5rem;
 
   font-size: 2.5rem;
   display: flex;

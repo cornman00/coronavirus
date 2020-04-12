@@ -1,6 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import Sidebar from "./Sidebar";
 import styled from "styled-components";
+
+// Hamburger shape menu component at the top-left of the website
 
 const Hamburger = props => {
   return (
@@ -15,8 +17,7 @@ const Hamburger = props => {
 
 const HamburgerWrapper = styled.div`
   position: relative;
-  top: 0.5rem;
-  left: 1rem;
+  left: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

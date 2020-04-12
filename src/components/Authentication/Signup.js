@@ -9,7 +9,6 @@ export class Signup extends Component {
           <form action="#">
             <h1>Create Account</h1>
 
-            <span>or use your email for registration</span>
             <input type="text" placeholder="First Name" />
             <input type="text" placeholder="Last Name" />
             <input type="email" placeholder="Email" />

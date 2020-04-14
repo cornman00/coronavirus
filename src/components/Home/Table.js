@@ -5,30 +5,30 @@ export class Table extends Component {
   constructor() {
     super();
     this.state = {
-      cases: []
+      cases: [],
     };
   }
 
   componentDidMount() {
     fetch("http://localhost:5000/cases5")
-      .then(res => res.json())
-      .then(cases => this.setState({ cases }));
+      .then((res) => res.json())
+      .then((cases) => this.setState({ cases }));
   }
 
   // get the total number of cases in the US by the type
-  getUSTotalCases = caseType => {
+  getUSTotalCases = (caseType) => {
     let filtered = this.state.cases.filter(
-      elem => elem.Country_Region === "US"
+      (elem) => elem.Country_Region === "US"
     );
 
     let sum = 0;
     if (caseType === "Confirmed") {
-      filtered.forEach(elem => (sum = sum + elem.Confirmed));
+      filtered.forEach((elem) => (sum = sum + elem.Confirmed));
     } else if (caseType === "Deaths") {
-      filtered.forEach(elem => (sum = sum + elem.Deaths));
+      filtered.forEach((elem) => (sum = sum + elem.Deaths));
     } else if (caseType === "Recovered") {
       let l = this.state.cases.filter(
-        elem =>
+        (elem) =>
           elem.Province_State === "Recovered" && elem.Country_Region === "US"
       );
       if (l.length > 0) {
@@ -42,14 +42,14 @@ export class Table extends Component {
   // get the total number of cases in the US by location
   casesByState = (s, caseType) => {
     s = s.charAt(0).toUpperCase() + s.slice(1);
-    let filtered = this.state.cases.filter(elem => elem.Province_State === s);
+    let filtered = this.state.cases.filter((elem) => elem.Province_State === s);
 
     let sum = 0;
 
     if (caseType === "Confirmed") {
-      filtered.forEach(elem => (sum = sum + elem.Confirmed));
+      filtered.forEach((elem) => (sum = sum + elem.Confirmed));
     } else if (caseType === "Deaths") {
-      filtered.forEach(elem => (sum = sum + elem.Deaths));
+      filtered.forEach((elem) => (sum = sum + elem.Deaths));
     }
     return sum;
   };
@@ -323,18 +323,6 @@ export class Table extends Component {
               <td>Virgin Islands</td>
               <td>{this.casesByState("Virgin Islands", "Confirmed")}</td>
               <td>{this.casesByState("Virgin Islands", "Deaths")}</td>
-            </tr>
-            <tr>
-              <td>American Samoa</td>
-              <td>{this.casesByState("American Samoa", "Confirmed")}</td>
-              <td>{this.casesByState("American Samoa", "Deaths")}</td>
-            </tr>
-            <tr>
-              <td>Northern Mariana Islands</td>
-              <td>
-                {this.casesByState("Northern Mariana Islands", "Confirmed")}
-              </td>
-              <td>{this.casesByState("Northern Mariana Islands", "Deaths")}</td>
             </tr>
           </tbody>
         </table>

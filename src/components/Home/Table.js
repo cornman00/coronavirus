@@ -10,7 +10,7 @@ export class Table extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:5000/cases5")
+    fetch("http://localhost:5000/cases/5")
       .then((res) => res.json())
       .then((cases) => this.setState({ cases }));
   }

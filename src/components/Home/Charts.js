@@ -7,7 +7,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
 } from "recharts";
 
 export default class Example extends PureComponent {
@@ -19,46 +19,46 @@ export default class Example extends PureComponent {
       cases2: [],
       cases3: [],
       cases4: [],
-      cases5: []
+      cases5: [],
     };
   }
 
   componentDidMount() {
-    fetch("http://localhost:5000/cases1")
-      .then(res => res.json())
-      .then(cases1 => this.setState({ cases1 }));
+    fetch("http://localhost:5000/cases/1")
+      .then((res) => res.json())
+      .then((cases1) => this.setState({ cases1 }));
 
-    fetch("http://localhost:5000/cases2")
-      .then(res => res.json())
-      .then(cases2 => this.setState({ cases2 }));
+    fetch("http://localhost:5000/cases/2")
+      .then((res) => res.json())
+      .then((cases2) => this.setState({ cases2 }));
 
-    fetch("http://localhost:5000/cases3")
-      .then(res => res.json())
-      .then(cases3 => this.setState({ cases3 }));
+    fetch("http://localhost:5000/cases/3")
+      .then((res) => res.json())
+      .then((cases3) => this.setState({ cases3 }));
 
-    fetch("http://localhost:5000/cases4")
-      .then(res => res.json())
-      .then(cases4 => this.setState({ cases4 }));
+    fetch("http://localhost:5000/cases/4")
+      .then((res) => res.json())
+      .then((cases4) => this.setState({ cases4 }));
 
-    fetch("http://localhost:5000/cases5")
-      .then(res => res.json())
-      .then(cases5 => this.setState({ cases5 }));
+    fetch("http://localhost:5000/cases/5")
+      .then((res) => res.json())
+      .then((cases5) => this.setState({ cases5 }));
   }
 
   // get the total number of confirmed cases in the US
-  getUSTotalCases = cases => {
-    let filtered = cases.filter(elem => elem.Country_Region === "US");
+  getUSTotalCases = (cases) => {
+    let filtered = cases.filter((elem) => elem.Country_Region === "US");
     let sum = 0;
-    filtered.forEach(elem => (sum = sum + elem.Confirmed));
+    filtered.forEach((elem) => (sum = sum + elem.Confirmed));
     return sum;
   };
 
   // get the total number of confirmed cases in the US by state
   casesByState = (caseNum, s) => {
     s = s.charAt(0).toUpperCase() + s.slice(1);
-    let filtered = caseNum.filter(elem => elem.Province_State === s);
+    let filtered = caseNum.filter((elem) => elem.Province_State === s);
     let sum = 0;
-    filtered.forEach(elem => (sum = sum + elem.Confirmed));
+    filtered.forEach((elem) => (sum = sum + elem.Confirmed));
     return sum;
   };
 
@@ -77,47 +77,47 @@ export default class Example extends PureComponent {
       us_data = [
         {
           name: cases1[0].Last_Update.substring(0, 11),
-          confirmed: this.getUSTotalCases(cases1)
+          confirmed: this.getUSTotalCases(cases1),
         },
         {
           name: cases2[0].Last_Update.substring(0, 11),
-          confirmed: this.getUSTotalCases(cases2)
+          confirmed: this.getUSTotalCases(cases2),
         },
         {
           name: cases3[0].Last_Update.substring(0, 11),
-          confirmed: this.getUSTotalCases(cases3)
+          confirmed: this.getUSTotalCases(cases3),
         },
         {
           name: cases4[0].Last_Update.substring(0, 11),
-          confirmed: this.getUSTotalCases(cases4)
+          confirmed: this.getUSTotalCases(cases4),
         },
         {
           name: cases5[0].Last_Update.substring(0, 11),
-          confirmed: this.getUSTotalCases(cases5)
-        }
+          confirmed: this.getUSTotalCases(cases5),
+        },
       ];
 
       il_data = [
         {
           name: cases1[0].Last_Update.substring(0, 11),
-          confirmed: this.casesByState(cases1, "illinois")
+          confirmed: this.casesByState(cases1, "illinois"),
         },
         {
           name: cases2[0].Last_Update.substring(0, 11),
-          confirmed: this.casesByState(cases2, "illinois")
+          confirmed: this.casesByState(cases2, "illinois"),
         },
         {
           name: cases3[0].Last_Update.substring(0, 11),
-          confirmed: this.casesByState(cases3, "illinois")
+          confirmed: this.casesByState(cases3, "illinois"),
         },
         {
           name: cases4[0].Last_Update.substring(0, 11),
-          confirmed: this.casesByState(cases4, "illinois")
+          confirmed: this.casesByState(cases4, "illinois"),
         },
         {
           name: cases5[0].Last_Update.substring(0, 11),
-          confirmed: this.casesByState(cases5, "illinois")
-        }
+          confirmed: this.casesByState(cases5, "illinois"),
+        },
       ];
     }
     return (
@@ -132,7 +132,7 @@ export default class Example extends PureComponent {
             style={{
               textAlign: "center",
               textTransform: "capitalize",
-              marginBottom: "-30px"
+              marginBottom: "-30px",
             }}
           >
             US total confirmed cases
@@ -143,7 +143,7 @@ export default class Example extends PureComponent {
               marginTop: "3.5rem",
 
               width: "50%",
-              padding: "10px"
+              padding: "10px",
             }}
           >
             <LineChart
@@ -154,7 +154,7 @@ export default class Example extends PureComponent {
                 top: 5,
                 right: 30,
                 left: 20,
-                bottom: 5
+                bottom: 5,
               }}
             >
               <CartesianGrid strokeDasharray="3 3" />
@@ -179,7 +179,7 @@ export default class Example extends PureComponent {
             style={{
               textAlign: "center",
               textTransform: "capitalize",
-              marginBottom: "-30px"
+              marginBottom: "-30px",
             }}
           >
             illinois total confirmed cases
@@ -189,7 +189,7 @@ export default class Example extends PureComponent {
               margin: "auto",
               marginTop: "3.5rem",
               width: "50%",
-              padding: "10px"
+              padding: "10px",
             }}
           >
             <LineChart
@@ -200,7 +200,7 @@ export default class Example extends PureComponent {
                 top: 5,
                 right: 30,
                 left: 20,
-                bottom: 5
+                bottom: 5,
               }}
             >
               <CartesianGrid strokeDasharray="3 3" />

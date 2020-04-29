@@ -20,65 +20,112 @@ db.connect((err) => {
   console.log("database connected");
 });
 
-app.get("/cases1", (req, res) => {
-  const q = "SELECT * FROM `040920`";
-  db.query(q, (err, results) => {
-    if (err) {
-      return res.send(err);
-    } else {
-      return res.json(results);
-    }
-  });
-});
-
-app.get("/cases2", (req, res) => {
-  const q = "SELECT * FROM `041020`";
-  db.query(q, (err, results) => {
-    if (err) {
-      return res.send(err);
-    } else {
-      return res.json(results);
-    }
-  });
-});
-
-app.get("/cases3", (req, res) => {
-  const q = "SELECT * FROM `041120`";
-  db.query(q, (err, results) => {
-    if (err) {
-      return res.send(err);
-    } else {
-      return res.json(results);
-    }
-  });
-});
-
-app.get("/cases4", (req, res) => {
-  const q = "SELECT * FROM `041220`";
-  db.query(q, (err, results) => {
-    if (err) {
-      return res.send(err);
-    } else {
-      return res.json(results);
-    }
-  });
-});
-
-app.get("/cases5", (req, res) => {
-  const q = "SELECT * FROM `041320`";
-  db.query(q, (err, results) => {
-    if (err) {
-      return res.send(err);
-    } else {
-      return res.json(results);
-    }
-  });
-});
-
-// db.end(err => {
-//   if (err) {
-//     console.log("db termination failed");
-//   }
+// app.get("/cases1", (req, res) => {
+//   const q = "SELECT * FROM `042220`";
+//   db.query(q, (err, results) => {
+//     if (err) {
+//       return res.send(err);
+//     } else {
+//       return res.json(results);
+//     }
+//   });
 // });
-const port = 5000;
+
+// app.get("/cases2", (req, res) => {
+//   const q = "SELECT * FROM `042320`";
+//   db.query(q, (err, results) => {
+//     if (err) {
+//       return res.send(err);
+//     } else {
+//       return res.json(results);
+//     }
+//   });
+// });
+
+// app.get("/cases3", (req, res) => {
+//   const q = "SELECT * FROM `042420`";
+//   db.query(q, (err, results) => {
+//     if (err) {
+//       return res.send(err);
+//     } else {
+//       return res.json(results);
+//     }
+//   });
+// });
+
+// app.get("/cases4", (req, res) => {
+//   const q = "SELECT * FROM `042520`";
+//   db.query(q, (err, results) => {
+//     if (err) {
+//       return res.send(err);
+//     } else {
+//       return res.json(results);
+//     }
+//   });
+// });
+
+// app.get("/cases5", (req, res) => {
+//   const q = "SELECT * FROM `042620`";
+//   db.query(q, (err, results) => {
+//     if (err) {
+//       return res.send(err);
+//     } else {
+//       return res.json(results);
+//     }
+//   });
+// });
+
+app.get("/cases/:id", (req, res) => {
+  let q = "";
+  if (req.params.id === "1") {
+    q = "SELECT * FROM `042220`";
+    db.query(q, (err, results) => {
+      if (err) {
+        return res.send(err);
+      } else {
+        return res.json(results);
+      }
+    });
+  } else if (req.params.id === "2") {
+    q = "SELECT * FROM `042320`";
+    db.query(q, (err, results) => {
+      if (err) {
+        return res.send(err);
+      } else {
+        return res.json(results);
+      }
+    });
+  } else if (req.params.id === "3") {
+    q = "SELECT * FROM `042420`";
+    db.query(q, (err, results) => {
+      if (err) {
+        return res.send(err);
+      } else {
+        return res.json(results);
+      }
+    });
+  } else if (req.params.id === "4") {
+    q = "SELECT * FROM `042520`";
+    db.query(q, (err, results) => {
+      if (err) {
+        return res.send(err);
+      } else {
+        return res.json(results);
+      }
+    });
+  } else if (req.params.id === "5") {
+    q = "SELECT * FROM `042620`";
+    db.query(q, (err, results) => {
+      if (err) {
+        return res.send(err);
+      } else {
+        return res.json(results);
+      }
+    });
+  } else {
+    res.send("Resource Not Found");
+  }
+});
+
+const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`server running on port ${port}`));

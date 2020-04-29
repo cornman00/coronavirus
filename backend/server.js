@@ -20,61 +20,6 @@ db.connect((err) => {
   console.log("database connected");
 });
 
-// app.get("/cases1", (req, res) => {
-//   const q = "SELECT * FROM `042220`";
-//   db.query(q, (err, results) => {
-//     if (err) {
-//       return res.send(err);
-//     } else {
-//       return res.json(results);
-//     }
-//   });
-// });
-
-// app.get("/cases2", (req, res) => {
-//   const q = "SELECT * FROM `042320`";
-//   db.query(q, (err, results) => {
-//     if (err) {
-//       return res.send(err);
-//     } else {
-//       return res.json(results);
-//     }
-//   });
-// });
-
-// app.get("/cases3", (req, res) => {
-//   const q = "SELECT * FROM `042420`";
-//   db.query(q, (err, results) => {
-//     if (err) {
-//       return res.send(err);
-//     } else {
-//       return res.json(results);
-//     }
-//   });
-// });
-
-// app.get("/cases4", (req, res) => {
-//   const q = "SELECT * FROM `042520`";
-//   db.query(q, (err, results) => {
-//     if (err) {
-//       return res.send(err);
-//     } else {
-//       return res.json(results);
-//     }
-//   });
-// });
-
-// app.get("/cases5", (req, res) => {
-//   const q = "SELECT * FROM `042620`";
-//   db.query(q, (err, results) => {
-//     if (err) {
-//       return res.send(err);
-//     } else {
-//       return res.json(results);
-//     }
-//   });
-// });
-
 app.get("/cases/:id", (req, res) => {
   let q = "";
   if (req.params.id === "1") {

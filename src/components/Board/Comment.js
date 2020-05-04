@@ -12,22 +12,21 @@ export class Comment extends Component {
       comments: [],
       newComment: {
         id: 0,
-        text: ""
-      }
+        text: "",
+      },
     };
   }
 
-  updateInput = e => {
+  updateInput = (e) => {
     this.setState({
       newComment: {
         id: 1 + Math.random(),
-        text: e.target.value
-      }
+        text: e.target.value,
+      },
     });
-    console.log(this.state.newComment);
   };
 
-  addComment = e => {
+  addComment = (e) => {
     e.preventDefault();
     const currentComment = this.state.newComment;
     if (currentComment.text !== "") {
@@ -37,8 +36,8 @@ export class Comment extends Component {
         comments,
         newComment: {
           id: 0,
-          text: ""
-        }
+          text: "",
+        },
       });
     }
   };

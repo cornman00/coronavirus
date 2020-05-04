@@ -5,7 +5,6 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { ContextManager } from "./context";
-import "leaflet/dist/leaflet.css";
 
 ReactDOM.render(
   <ContextManager>

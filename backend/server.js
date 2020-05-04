@@ -23,7 +23,7 @@ db.connect((err) => {
 app.get("/cases/:id", (req, res) => {
   let q = "";
   if (req.params.id === "1") {
-    q = "SELECT * FROM `042220`";
+    q = "SELECT * FROM `042920`";
     db.query(q, (err, results) => {
       if (err) {
         return res.send(err);
@@ -32,7 +32,7 @@ app.get("/cases/:id", (req, res) => {
       }
     });
   } else if (req.params.id === "2") {
-    q = "SELECT * FROM `042320`";
+    q = "SELECT * FROM `043020`";
     db.query(q, (err, results) => {
       if (err) {
         return res.send(err);
@@ -41,7 +41,7 @@ app.get("/cases/:id", (req, res) => {
       }
     });
   } else if (req.params.id === "3") {
-    q = "SELECT * FROM `042420`";
+    q = "SELECT * FROM `050120`";
     db.query(q, (err, results) => {
       if (err) {
         return res.send(err);
@@ -50,7 +50,7 @@ app.get("/cases/:id", (req, res) => {
       }
     });
   } else if (req.params.id === "4") {
-    q = "SELECT * FROM `042520`";
+    q = "SELECT * FROM `050220`";
     db.query(q, (err, results) => {
       if (err) {
         return res.send(err);
@@ -59,7 +59,7 @@ app.get("/cases/:id", (req, res) => {
       }
     });
   } else if (req.params.id === "5") {
-    q = "SELECT * FROM `042620`";
+    q = "SELECT * FROM `050320`";
     db.query(q, (err, results) => {
       if (err) {
         return res.send(err);

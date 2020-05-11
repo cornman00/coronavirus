@@ -23,20 +23,14 @@ export class Table extends Component {
 
     let sum = 0;
     if (caseType === "Confirmed") {
-      filtered.forEach((elem) => {
-        console.log(typeof elem.Confirmed);
-        return (sum = sum + elem.Confirmed);
-      });
+      filtered.forEach((elem) => (sum = sum + elem.Confirmed));
     } else if (caseType === "Deaths") {
       filtered.forEach((elem) => (sum = sum + elem.Deaths));
     } else if (caseType === "Recovered") {
       filtered.forEach((elem) => {
-        let num = parseInt(elem.Recovered);
-
-        return (sum = sum + num);
+        sum = sum + parseInt(elem.Recovered);
       });
     }
-    console.log(sum);
     return sum;
   };
 
@@ -53,7 +47,10 @@ export class Table extends Component {
     } else if (caseType === "Deaths") {
       filtered.forEach((elem) => (sum = sum + elem.Deaths));
     } else if (caseType === "Recovered") {
-      filtered.forEach((elem) => (sum = sum + elem.Recovered));
+      filtered.forEach((elem) => {
+        filtered.forEach((elem) => (sum = sum + parseInt(elem.Recovered)));
+      });
+      return sum === 0 ? "N/A" : sum;
     }
     return sum;
   };

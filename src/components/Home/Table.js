@@ -23,12 +23,20 @@ export class Table extends Component {
 
     let sum = 0;
     if (caseType === "Confirmed") {
-      filtered.forEach((elem) => (sum = sum + elem.Confirmed));
+      filtered.forEach((elem) => {
+        console.log(typeof elem.Confirmed);
+        return (sum = sum + elem.Confirmed);
+      });
     } else if (caseType === "Deaths") {
       filtered.forEach((elem) => (sum = sum + elem.Deaths));
     } else if (caseType === "Recovered") {
-      filtered.forEach((elem) => (sum = sum + elem.Recovered));
+      filtered.forEach((elem) => {
+        let num = parseInt(elem.Recovered);
+
+        return (sum = sum + num);
+      });
     }
+    console.log(sum);
     return sum;
   };
 

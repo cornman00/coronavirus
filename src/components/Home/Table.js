@@ -27,8 +27,9 @@ export class Table extends Component {
     } else if (caseType === "Deaths") {
       filtered.forEach((elem) => (sum = sum + elem.Deaths));
     } else if (caseType === "Recovered") {
+      // Recovered data provided JH is text type
       filtered.forEach((elem) => {
-        sum = sum + parseInt(elem.Recovered);
+        sum = elem.Recovered ? sum + parseInt(elem.Recovered) : sum;
       });
     }
     return sum;
@@ -37,9 +38,7 @@ export class Table extends Component {
   // get the total number of cases in the US by location
   casesByState = (s, caseType) => {
     s = s.charAt(0).toUpperCase() + s.slice(1);
-
     let filtered = this.state.cases.filter((elem) => elem.Province_State === s);
-
     let sum = 0;
 
     if (caseType === "Confirmed") {
@@ -47,10 +46,10 @@ export class Table extends Component {
     } else if (caseType === "Deaths") {
       filtered.forEach((elem) => (sum = sum + elem.Deaths));
     } else if (caseType === "Recovered") {
+      // Recovered data provided JH is text type
       filtered.forEach((elem) => {
-        filtered.forEach((elem) => (sum = sum + parseInt(elem.Recovered)));
+        sum = elem.Recovered === "" ? "N/A" : sum + parseInt(elem.Recovered);
       });
-      return sum === 0 ? "N/A" : sum;
     }
     return sum;
   };

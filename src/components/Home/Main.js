@@ -11,7 +11,6 @@ export class Main extends Component {
       <MainWrapper>
         <Info />
         <Charts />
-
         <Table />
       </MainWrapper>
     );

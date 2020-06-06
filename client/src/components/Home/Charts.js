@@ -33,7 +33,7 @@ export default class Example extends PureComponent {
     fetch(`/cases/${index}`)
       .then((res) => res.json())
       .then((data) => this.setState({ [`cases${index}`]: data }))
-      .catch((errr) => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   // get the total number of confirmed cases in the US

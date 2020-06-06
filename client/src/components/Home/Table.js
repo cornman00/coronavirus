@@ -12,7 +12,8 @@ export class Table extends Component {
   componentDidMount() {
     fetch("/cases/5")
       .then((res) => res.json())
-      .then((cases) => this.setState({ cases }));
+      .then((cases) => this.setState({ cases }))
+      .catch((err) => console.log(err));
   }
 
   // get the total number of cases in the US by the type

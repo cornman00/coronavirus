@@ -24,26 +24,17 @@ export default class Example extends PureComponent {
   }
 
   componentDidMount() {
-    fetch("/cases/1")
-      .then((res) => res.json())
-      .then((cases1) => this.setState({ cases1 }));
-
-    fetch("/cases/2")
-      .then((res) => res.json())
-      .then((cases2) => this.setState({ cases2 }));
-
-    fetch("/cases/3")
-      .then((res) => res.json())
-      .then((cases3) => this.setState({ cases3 }));
-
-    fetch("/cases/4")
-      .then((res) => res.json())
-      .then((cases4) => this.setState({ cases4 }));
-
-    fetch("/cases/5")
-      .then((res) => res.json())
-      .then((cases5) => this.setState({ cases5 }));
+    for (let i = 1; i < 6; i++) {
+      this.fetchCaseData(i);
+    }
   }
+
+  fetchCaseData = (index) => {
+    fetch(`/cases/${index}`)
+      .then((res) => res.json())
+      .then((data) => this.setState({ [`cases${index}`]: data }))
+      .catch((errr) => console.log(err));
+  };
 
   // get the total number of confirmed cases in the US
   getUSTotalCases = (cases) => {

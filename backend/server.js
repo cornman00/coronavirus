@@ -3,20 +3,14 @@ const { MongoClient } = require("mongodb");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
-// const MongoClient = require("mongodb").MongoClient;
 
 app.use(cors());
 
-// const db = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "1234", d
-//   database: "corona",
-//   port: 3306,
-// });
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
-const uri =
-  "mongodb+srv://will:tjrgus9839@@cluster1-glamp.mongodb.net/covid19?retryWrites=true&w=majority";
+const uri = `mongodb+srv://will:${process.env.USER_PASSWORD}@cluster1-glamp.mongodb.net/covid19?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

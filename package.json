@@ -4,8 +4,9 @@
   "description": "server side with express and mysql",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "start": "nodemon --exec babel-node server.js --ignore client",
+    "server": "nodemon server.js",
+    "build": "babel server.js --out-file server.compiled.js"
   },
   "author": "",
   "license": "MIT",

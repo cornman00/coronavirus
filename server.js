@@ -12,6 +12,18 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+  //
+  app.get("*", (req, res) => {
+    res.sendfile(path.join((__dirname = "client/build/index.html")));
+  });
+}
+//build mode
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/public/index.html"));
+});
+
 const uri = `mongodb+srv://will:${process.env.USER_PASSWORD}@cluster1-glamp.mongodb.net/covid19?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,

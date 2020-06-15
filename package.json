@@ -4,7 +4,7 @@
   "description": "server side with express and mysql",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --exec babel-node server.js --ignore client",
+    "start": "node server.js",
     "server": "nodemon server.js",
     "build": "babel server.js --out-file server.compiled.js"
   },

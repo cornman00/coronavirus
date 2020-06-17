@@ -1,7 +1,7 @@
 const express = require("express");
 const { MongoClient } = require("mongodb");
-const path = require("path");
 const cors = require("cors");
+const path = require("path");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -34,7 +34,7 @@ app.get("/api/cases/:id", async (req, res) => {
   let cursor;
   if (req.params.id === "1") {
     try {
-      cursor = await client.db("covid19").collection("060620").find({});
+      cursor = await client.db("covid19").collection("061220").find({});
       const data = await cursor.toArray();
       res.json(data);
     } catch (err) {
@@ -43,7 +43,7 @@ app.get("/api/cases/:id", async (req, res) => {
     }
   } else if (req.params.id === "2") {
     try {
-      cursor = await client.db("covid19").collection("060720").find({});
+      cursor = await client.db("covid19").collection("061320").find({});
       const data = await cursor.toArray();
       res.json(data);
     } catch (err) {
@@ -52,7 +52,7 @@ app.get("/api/cases/:id", async (req, res) => {
     }
   } else if (req.params.id === "3") {
     try {
-      cursor = await client.db("covid19").collection("060820").find({});
+      cursor = await client.db("covid19").collection("061420").find({});
       const data = await cursor.toArray();
       res.json(data);
     } catch (err) {
@@ -61,7 +61,7 @@ app.get("/api/cases/:id", async (req, res) => {
     }
   } else if (req.params.id === "4") {
     try {
-      cursor = await client.db("covid19").collection("060920").find({});
+      cursor = await client.db("covid19").collection("061520").find({});
       const data = await cursor.toArray();
       res.json(data);
     } catch (err) {
@@ -70,7 +70,7 @@ app.get("/api/cases/:id", async (req, res) => {
     }
   } else if (req.params.id === "5") {
     try {
-      cursor = await client.db("covid19").collection("061020").find({});
+      cursor = await client.db("covid19").collection("061620").find({});
       const data = await cursor.toArray();
       res.json(data);
     } catch (err) {

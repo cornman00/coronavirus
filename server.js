@@ -34,7 +34,7 @@ app.get("/api/cases/:id", async (req, res) => {
   let cursor;
   if (req.params.id === "1") {
     try {
-      cursor = await client.db("covid19").collection("061220").find({});
+      cursor = await client.db("covid19").collection("062720").find({});
       const data = await cursor.toArray();
       res.json(data);
     } catch (err) {
@@ -43,7 +43,7 @@ app.get("/api/cases/:id", async (req, res) => {
     }
   } else if (req.params.id === "2") {
     try {
-      cursor = await client.db("covid19").collection("061320").find({});
+      cursor = await client.db("covid19").collection("062820").find({});
       const data = await cursor.toArray();
       res.json(data);
     } catch (err) {
@@ -52,7 +52,7 @@ app.get("/api/cases/:id", async (req, res) => {
     }
   } else if (req.params.id === "3") {
     try {
-      cursor = await client.db("covid19").collection("061420").find({});
+      cursor = await client.db("covid19").collection("062920").find({});
       const data = await cursor.toArray();
       res.json(data);
     } catch (err) {
@@ -61,7 +61,7 @@ app.get("/api/cases/:id", async (req, res) => {
     }
   } else if (req.params.id === "4") {
     try {
-      cursor = await client.db("covid19").collection("061520").find({});
+      cursor = await client.db("covid19").collection("063020").find({});
       const data = await cursor.toArray();
       res.json(data);
     } catch (err) {
@@ -70,7 +70,7 @@ app.get("/api/cases/:id", async (req, res) => {
     }
   } else if (req.params.id === "5") {
     try {
-      cursor = await client.db("covid19").collection("061620").find({});
+      cursor = await client.db("covid19").collection("070120").find({});
       const data = await cursor.toArray();
       res.json(data);
     } catch (err) {

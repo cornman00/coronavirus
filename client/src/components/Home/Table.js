@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../../App.css";
 import axios from "axios";
+import { serverURL } from "../../Config";
 
 export class Table extends Component {
   constructor() {
@@ -18,7 +19,7 @@ export class Table extends Component {
   getCaseData = () => {
     (async () => {
       try {
-        const res = await axios.get("/api/cases/5");
+        const res = await axios.get(serverURL + "/api/cases/5");
         this.setState({ cases: res.data });
       } catch (err) {
         console.log("Case data load failed: " + err);

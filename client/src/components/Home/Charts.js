@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { serverURL } from "../../Config";
 
 export default class Example extends PureComponent {
   constructor() {
@@ -33,7 +34,7 @@ export default class Example extends PureComponent {
   getCaseData = (index) => {
     (async () => {
       try {
-        const res = await axios.get(`/api/cases/${index}`);
+        const res = await axios.get(serverURL + `/api/cases/${index}`);
         this.setState({ [`cases${index}`]: res.data });
       } catch (err) {
         console.log("Case data load failed: " + err);
@@ -118,12 +119,16 @@ export default class Example extends PureComponent {
     }
     return (
       <div
-        className="row"
-        style={{ marginTop: "3.5rem", marginBottom: "12.0rem" }}
+        className="chart-container"
+        style={{
+          display: "flex",
+          marginTop: "3.5rem",
+          marginBottom: "12.0rem",
+        }}
       >
         {/* US cases chart */}
 
-        <div className="col-sm">
+        <div>
           <h4
             style={{
               textAlign: "center",
@@ -135,15 +140,13 @@ export default class Example extends PureComponent {
           </h4>
           <div
             style={{
-              margin: "auto",
-              marginTop: "3.5rem",
-
+              margin: "3.5rem 0 0 0 ",
               width: "50%",
               padding: "10px",
             }}
           >
             <LineChart
-              width={500}
+              width={600}
               height={300}
               data={us_data}
               margin={{
@@ -170,7 +173,7 @@ export default class Example extends PureComponent {
 
         {/* Illinois cases chart */}
 
-        <div className="col-sm">
+        <div>
           <h4
             style={{
               textAlign: "center",
@@ -182,14 +185,13 @@ export default class Example extends PureComponent {
           </h4>
           <div
             style={{
-              margin: "auto",
-              marginTop: "3.5rem",
+              margin: "3.5rem 0 0 0 ",
               width: "50%",
               padding: "10px",
             }}
           >
             <LineChart
-              width={500}
+              width={600}
               height={300}
               data={il_data}
               margin={{

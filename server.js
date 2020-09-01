@@ -45,11 +45,11 @@ const showRes = async (res, collection) => {
 
 app.get("/api/cases/:id", async (req, res) => {
   const idMap = {
-    1: "071120",
-    2: "071220",
-    3: "071320",
-    4: "071420",
-    5: "071520",
+    1: "082720",
+    2: "082820",
+    3: "082920",
+    4: "083020",
+    5: "083120",
   };
 
   await showRes(res, idMap[req.params.id]);
